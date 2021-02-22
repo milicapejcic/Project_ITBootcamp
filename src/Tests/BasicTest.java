@@ -46,16 +46,16 @@ public class BasicTest {
 			this.js = (JavascriptExecutor) driver; 
 			this.driver.manage().window().maximize();
 			this.driver.manage().timeouts().pageLoadTimeout(30,TimeUnit.SECONDS);
-			this.driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+			this.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			
-			this.popupElements = new LocationPopupPage(driver, waiter);
-			this.logElements = new LoginPage(driver, waiter);
-			this.notifElements = new NotificationSistemPage(driver, waiter);
-			this.profileElements = new ProfilePage(driver, waiter);
-			this.authElements = new AuthPage(driver, waiter);
-			this.mealElements = new MealPage(driver, waiter);
-			this.cartElements = new CartSummaryPage(driver, waiter);
-			this.searchElements = new SearchResultPage(driver, waiter);
+			this.popupElements = new LocationPopupPage(driver, waiter ,js);
+			this.logElements = new LoginPage(driver, waiter,js);
+			this.notifElements = new NotificationSistemPage(driver, waiter,js);
+			this.profileElements = new ProfilePage(driver, waiter,js);
+			this.authElements = new AuthPage(driver, waiter,js);
+			this.mealElements = new MealPage(driver, waiter,js);
+			this.cartElements = new CartSummaryPage(driver, waiter,js);
+			this.searchElements = new SearchResultPage(driver, waiter,js);
 			this.baseURL ="http://demo.yo-meals.com";
 			this.email = "customer@dummyid.com";
 			this.password ="12345678a";
@@ -69,11 +69,11 @@ public class BasicTest {
 			 
 		 
 
-}
+}/*
 	@AfterClass
 	public void clean() {
 		driver.quit();
-	}
+	}*/
 }
 
  

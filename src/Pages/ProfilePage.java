@@ -1,13 +1,16 @@
 package Pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProfilePage extends BasicPage {
 
-	public ProfilePage(WebDriver driver, WebDriverWait waiter) {
-		super(driver, waiter);
-		 
+	public ProfilePage(WebDriver driver, WebDriverWait waiter, JavascriptExecutor js) {
+		super(driver, waiter, js);
+		// TODO Auto-generated constructor stub
 	}
+
+	 
 
 }
