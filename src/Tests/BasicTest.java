@@ -24,7 +24,7 @@ public class BasicTest {
 			 
 			this.driver.manage().window().maximize();
 			this.driver.manage().timeouts().pageLoadTimeout(30,TimeUnit.SECONDS);
-			this.driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+			this.driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 			 
 		 
 
