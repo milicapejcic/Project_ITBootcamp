@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProfilePage extends BasicPage {
@@ -13,7 +14,15 @@ public class ProfilePage extends BasicPage {
 		super(driver, waiter, js);
 		 
 	}
-	
+	public WebElement getPersonalInfo() {
+		return driver.findElement(By.linkText("Roland Dubois"));
+	}
+	public WebElement getMyAcc() {
+		return driver.findElement(By.linkText("My Account"));
+	}
+	public WebElement getProfile() {
+		return driver.findElement(By.linkText("Profile"));
+	}
 	public WebElement getFirstName() {
 		return driver.findElement(By.name("user_first_name"));
 	}
@@ -31,22 +40,43 @@ public class ProfilePage extends BasicPage {
 	}
 	public WebElement getZipCode() {
 		return driver.findElement(By.name("user_zip"));
+		
 	}
-	public WebElement getUploadBtn() {
-		return driver.findElement(By.xpath("//*[@class='hover-elements']/a[1]"));
+	public Select getCountry() {
+		Select country = new Select (driver.findElement(By.id("user_country_id")));
+		return country;
 	}
-	public WebElement getRemoveBtn() {
-	    return driver.findElement(By.xpath("//*[@class='hover-elements']/a[2]"));
+	public Select getState() {
+		Select state = new Select(driver.findElement(By.id("user_state_id")));
+		return state;
 	}
-	public WebElement uploadPhoto() {
-		return driver.findElement(By.xpath("//input[@type='file']"));
+	public Select getCity() {
+		Select city = new Select(driver.findElement(By.id("user_city")));
+		return city;
+	}
+	public WebElement saveAll() {
+		return driver.findElement(By.name("btn_submit"));
+	}
+	public WebElement currentPassword() {
+		return driver.findElement(By.name("current_password"));
+	}
+	public WebElement newPassword() {
+		return driver.findElement(By.name("new_password"));
+	}
+	public WebElement confirmNewPassword() {
+		return driver.findElement(By.name("conf_new_password"));
+	}
+	public void uploadBtn() {
+		js.executeScript("arguments[0].click();",
+				driver.findElement(By.xpath("//*[@title='Uplaod']")));
 	}
 	public void uploadProfilePhoto(String photoPath) {
-		 this.js.executeScript("arguments[0].click();", getUploadBtn());
-		 this.uploadPhoto().sendKeys(photoPath);
-	}
-	public void removePhoto() {
-		this.js.executeScript("arguments[0].click()", getRemoveBtn());
+		this.uploadBtn();
+		driver.findElement(By.xpath("//*[@type='file']")).sendKeys(photoPath);
+	} 
+	 public void removePhoto() {
+		this.js.executeScript("arguments[0].click()",  
+				driver.findElement(By.xpath("//*[@title='Remove']")));
 	}
 	
 	public void changeProfileInfo(String firstName, String lastName , String email, String address,

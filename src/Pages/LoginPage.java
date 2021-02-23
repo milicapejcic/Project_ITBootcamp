@@ -17,6 +17,8 @@ public class LoginPage extends BasicPage {
 		super(driver, waiter, js);
 		 
 	}
+	 
+	
 	public WebElement getLogin() {
 		return driver.findElement(By.linkText("Login"));
 	}
