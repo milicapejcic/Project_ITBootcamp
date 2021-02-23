@@ -1,12 +1,26 @@
 package Tests;
 
+import java.awt.AWTException;
+import java.awt.HeadlessException;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
+
+import javax.imageio.ImageIO;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
 import Pages.AuthPage;
@@ -58,22 +72,25 @@ public class BasicTest {
 			this.searchElements = new SearchResultPage(driver, waiter,js);
 			this.baseURL ="http://demo.yo-meals.com";
 			this.email = "customer@dummyid.com";
-			this.password ="12345678a";
-			
-			
-			
-			
-			
-			 
-			 
-			 
+			this.password ="12345678a"; 
 		 
 
-}/*
+}
+}
+/*	@AfterMethod
+	public void takeScreenshot(ITestResult result) throws HeadlessException, AWTException, IOException {
+		String testTime = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss'.jpg'").format(new Date());
+		if (ITestResult.FAILURE == result.getStatus()) {
+			BufferedImage screenshoot = new Robot()
+					.createScreenCapture((new Rectangle(Toolkit.getDefaultToolkit().getScreenSize())));
+			File screenshot = new File("screenshot.jpg");
+			ImageIO.write(screenshoot, "jpg", new File("Screenshots\\" + testTime));
+		}
+		}
 	@AfterClass
 	public void clean() {
 		driver.quit();
-	}*/
-}
+	}
+}*/
 
  

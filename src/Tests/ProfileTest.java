@@ -15,14 +15,25 @@ public class ProfileTest extends BasicTest {
 		logElements.logIn(this.email,this.password);	 
 	 	String loginSuccessfull = driver.findElement(By.xpath("//*[@class=\"div_msg\"]/ul/li")).getText();
 	 	Assert.assertEquals(loginSuccessfull, "Login Successfull", "[Error! User is not logged in]");
-	//	profileElements.uploadProfilePhoto("C:\\Users\\x\\Desktop\\image01");
-		//Thread.sleep(5000);
-	 	profileElements.getPersonalInfo().click();
-	 	profileElements.getMyAcc().click();
-	 	profileElements.getProfile().click();
-	 	profileElements.uploadProfilePhoto("C:\\Users\\x\\Desktop\\slika.jpg");
-	 	Thread.sleep(5000);
+	 	 
+	 	 
 		 
+	}
+	@Test(priority=4)
+	public void profileImgTest() throws InterruptedException {
+		driver.navigate().to(this.baseURL+"/member/account");
+		//popupElements.closePopUp();
+		profileElements.getPersonalInfo().click();
+	 	profileElements.getMyAcc().click();
+		profileElements.getProfile().click();
+	 	profileElements.uploadProfilePhoto("C:\\Users\\x\\Desktop\\slika.jpg");
+	 	
+	 	Assert.assertEquals(this.notifElements.getMsgText(), "Profile Image Uploaded Successfully",
+	 			"[Error! message doesn't exist!!!]");
+	 	this.notifElements.msgDisaper();
+	 	this.profileElements.removePhoto();
+	 	Assert.assertEquals(this.notifElements.getMsgText(), "Profile Image Deleted Successfully",
+	 			"[Error! Image is not deleted!!!");
 	}
 	
 	 

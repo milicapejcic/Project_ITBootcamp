@@ -15,7 +15,8 @@ public class ProfilePage extends BasicPage {
 		 
 	}
 	public WebElement getPersonalInfo() {
-		return driver.findElement(By.linkText("Roland Dubois"));
+		return this.driver.findElement(By.className("after-arrow"));
+	
 	}
 	public WebElement getMyAcc() {
 		return driver.findElement(By.linkText("My Account"));
