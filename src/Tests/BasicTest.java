@@ -31,6 +31,7 @@ import Pages.MealPage;
 import Pages.NotificationSistemPage;
 import Pages.ProfilePage;
 import Pages.SearchResultPage;
+import okhttp3.Cookie;
 
  
 
@@ -73,11 +74,10 @@ public class BasicTest {
 			this.baseURL ="http://demo.yo-meals.com";
 			this.email = "customer@dummyid.com";
 			this.password ="12345678a"; 
-		 
+		  
+}
 
-}
-}
-/*	@AfterMethod
+	@AfterMethod
 	public void takeScreenshot(ITestResult result) throws HeadlessException, AWTException, IOException {
 		String testTime = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss'.jpg'").format(new Date());
 		if (ITestResult.FAILURE == result.getStatus()) {
@@ -85,12 +85,13 @@ public class BasicTest {
 					.createScreenCapture((new Rectangle(Toolkit.getDefaultToolkit().getScreenSize())));
 			File screenshot = new File("screenshot.jpg");
 			ImageIO.write(screenshoot, "jpg", new File("Screenshots\\" + testTime));
-		}
+			 
+		}this.driver.manage().deleteAllCookies();
 		}
 	@AfterClass
-	public void clean() {
+	public void clean() { 
 		driver.quit();
 	}
-}*/
+}
 
  

@@ -81,7 +81,7 @@ public class ProfilePage extends BasicPage {
 	}
 	
 	public void changeProfileInfo(String firstName, String lastName , String email, String address,
-			String phone, String zipCode) {
+			String phone, String zipCode, Select country, Select state, Select city) throws InterruptedException {
 		this.getFirstName().sendKeys(Keys.CONTROL+"a" + Keys.DELETE);
 		this.getFirstName().sendKeys(firstName);
 		this.getLastName().sendKeys(Keys.CONTROL+"a" + Keys.DELETE);
@@ -94,6 +94,12 @@ public class ProfilePage extends BasicPage {
 		this.getPhone().sendKeys(phone);
 		this.getZipCode().sendKeys(Keys.CONTROL+"a" + Keys.DELETE);
 		this.getZipCode().sendKeys(zipCode);
+		this.getCountry().selectByVisibleText(""+country+"");
+		Thread.sleep(2000);
+		this.getState().selectByVisibleText("Goa");
+		Thread.sleep(2000);
+		this.getCity().selectByVisibleText("Aldona");
+		this.saveAll().sendKeys(Keys.ENTER);
 		
 	}
 	 

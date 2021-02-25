@@ -84,9 +84,24 @@ public class MealPage extends BasicPage {
 		 
 	}
 
-	public WebElement resetCuisineType() {
+	public WebElement resetCouisineType() {
 		return driver.findElement(By.linkText("Resest Cuisine Type"));
 	}
+
+	public WebElement getProduct(String name) {
+		return driver.findElement(By.linkText(name));
+	}
+
+	public WebElement getFavourite() {
+		return driver.findElement(By.xpath("//*[@class='favourite itemfav  link']"));
+	}
+
+	public void addMeal(String quantity) {
+		 
+		driver.findElement(By.name("product_qty")).sendKeys(quantity);
+		driver.findElement(By.linkText("Add To Cart")).click();
+	}
+}
 	 
 
-}
+
