@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -88,16 +89,19 @@ public class MealPage extends BasicPage {
 		return driver.findElement(By.linkText("Resest Cuisine Type"));
 	}
 
-	public WebElement getProduct(String name) {
-		return driver.findElement(By.linkText(name));
+	public void addproduct(String name) {
+		driver.findElement(By.linkText(name)).click();
+	}
+	public void clearAll () {
+		this.driver.findElement(By.xpath("//*[@class=\"cart-head\"]/a[2]"));
 	}
 
 	public WebElement getFavourite() {
-		return driver.findElement(By.xpath("//*[@class='favourite itemfav  link']"));
+		return this.driver.findElement(By.xpath("//*[@class=\"product-detail-image\"]/a"));
 	}
 
 	public void addMeal(String quantity) {
-		 
+		driver.findElement(By.name("product_qty")).sendKeys(Keys.CONTROL + "a" + Keys.DELETE);
 		driver.findElement(By.name("product_qty")).sendKeys(quantity);
 		driver.findElement(By.linkText("Add To Cart")).click();
 	}
