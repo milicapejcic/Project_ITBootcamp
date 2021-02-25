@@ -22,7 +22,7 @@ public class ProfileTest extends BasicTest {
 	
 	
 	@Test(priority=0)
-	public void editProfile() throws InterruptedException {
+	public void editProfileTest() throws InterruptedException {
 		driver.get(this.baseURL+"/guest-user/login-form");
 		popupElements.closePopUp();
 		logElements.logIn(this.email,this.password);	 
