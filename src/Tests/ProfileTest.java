@@ -20,7 +20,6 @@ import Pages.LocationPopupPage;
 
 public class ProfileTest extends BasicTest {
 	
-/*	
 	@Test(priority=0)
 	public void editProfileTest() throws InterruptedException {
 		driver.get(this.baseURL+"/guest-user/login-form");
@@ -115,7 +114,7 @@ public class ProfileTest extends BasicTest {
 			
 			
 		
-		} */
+		} 
 		@Test (priority=15)
 		public void SearchResultTest() throws IOException, InterruptedException {
 			 
