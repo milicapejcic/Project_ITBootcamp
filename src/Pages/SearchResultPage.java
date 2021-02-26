@@ -21,7 +21,7 @@ public class SearchResultPage extends BasicPage {
 	}
 
 	public ArrayList<String> getResultsNames() {
-		ArrayList<String> names = new ArrayList<String>();
+		ArrayList<String> names = new ArrayList<>();
 		for (int i = 0; i < this.getAllResults().size(); i++) {
 			names.add(this.getAllResults().get(i).getText());
 		}

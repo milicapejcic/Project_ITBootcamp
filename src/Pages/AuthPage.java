@@ -20,6 +20,7 @@ public class AuthPage extends BasicPage {
 		
 	} 
 	public void logOut() {
+		this.driver.findElement(By.xpath("//*[@class=\"filled \"]/a")).click();
 		this.getLogout().click();
 	}
 

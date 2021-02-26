@@ -20,7 +20,7 @@ import Pages.LocationPopupPage;
 
 public class ProfileTest extends BasicTest {
 	
-	
+/*	
 	@Test(priority=0)
 	public void editProfileTest() throws InterruptedException {
 		driver.get(this.baseURL+"/guest-user/login-form");
@@ -36,6 +36,7 @@ public class ProfileTest extends BasicTest {
 	public void profileImgTest() throws InterruptedException {
 		driver.navigate().to(this.baseURL+"/member/account");
 		popupElements.closePopUp();
+		logElements.logIn(this.email, this.password);
 		profileElements.getPersonalInfo().click();
 	 	profileElements.getMyAcc().click();
 		profileElements.getProfile().click();
@@ -49,7 +50,7 @@ public class ProfileTest extends BasicTest {
 	 			"[Error! Image is not deleted!!!");
 	 	authElements.logOut();
 	 	
-	} 
+	}  
 	@Test (priority=7)
 	public void MealItemTest() throws InterruptedException {
 		driver.navigate().to(this.baseURL+"/meal/lobster-shrimp-chicken-quesadilla-combo");
@@ -57,10 +58,6 @@ public class ProfileTest extends BasicTest {
 		mealElements.addMeal("2");
 		Assert.assertTrue(notifElements.getMsgText().contains("The Following Errors Occurred:"), "[Error!]");
 		Assert.assertTrue(notifElements.getMsgText().contains("Please Select Location"), "[Error!]");
-		
-		//Assert.assertEquals(notifElements.getMsgText(), "The Following Errors Occurred:\r\n" + 
-		//		"Please Select Location" 
-		//		, "[Error! Message don't exist!]");
 		notifElements.msgDisaper();
 		popupElements.openLocation();
 		popupElements.setLocation("City Center - Albany");
@@ -118,7 +115,7 @@ public class ProfileTest extends BasicTest {
 			
 			
 		
-		} 
+		} */
 		@Test (priority=15)
 		public void SearchResultTest() throws IOException, InterruptedException {
 			 
@@ -129,26 +126,30 @@ public class ProfileTest extends BasicTest {
 			XSSFWorkbook wb = new XSSFWorkbook(fis);	
 			XSSFSheet sheet = wb.getSheet("Meal Search Results");
 			SoftAssert sa = new SoftAssert() ;
-			DataFormatter format = new DataFormatter();
+			
 			 
 			for (int i =1 ; i < 7; i++) {
 				XSSFRow row = sheet.getRow(i);
 				String location = row.getCell(0).getStringCellValue();
 				String mealURL = row.getCell(1).getStringCellValue();
-				String numOfRes = format.formatCellValue(row.getCell(2));
+				int numOfRes = (int)row.getCell(2).getNumericCellValue();
 				
 				driver.navigate().to(mealURL);
-				Thread.sleep(1000);
 				popupElements.openLocation();
 				popupElements.setLocation(location);
-				searchElements.getAllResults(); 
+				Thread.sleep(2000);
 				sa.assertEquals(searchElements.getNumberOfResults(), numOfRes,
-						"[Error!Number of results is not the same! ]");
-				for(int j=3 ; j<row.getLastCellNum();j++) {
+						"[Error!Number of results is not the same! ]"+ i);
+				Thread.sleep(2000);
+				for(int j=3 ; j<searchElements.getAllResults().size()+3; j++) {
 					String product = row.getCell(j).getStringCellValue();
-					sa.assertTrue(searchElements.getResultsNames().contains(product), "[Error]");
+				//	System.out.println(product);
+					sa.assertTrue(searchElements.getResultsNames().get(j-3).contains(product), "[Error]");
+					Thread.sleep(2000);
+					 
 				}
-			 } 
+			 }
+			sa.assertAll();
 			 wb.close();
 			 fis.close();
 			

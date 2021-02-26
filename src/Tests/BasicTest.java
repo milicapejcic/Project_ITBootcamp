@@ -88,10 +88,10 @@ public class BasicTest {
 			 
 		}this.driver.manage().deleteAllCookies();
 		}
-	/*@AfterClass
+	@AfterClass
 	public void clean() { 
 		driver.quit();
-	}*/
+	}
 }
 
  
