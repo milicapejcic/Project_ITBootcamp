@@ -32,15 +32,16 @@ public class ProfileTest extends BasicTest {
 		 
 	}
 	@Test(priority=4)
-	public void profileImgTest() throws InterruptedException {
+	public void profileImgTest() throws InterruptedException, IOException {
 		driver.navigate().to(this.baseURL+"/member/account");
 		popupElements.closePopUp();
 		logElements.logIn(this.email, this.password);
 		profileElements.getPersonalInfo().click();
 	 	profileElements.getMyAcc().click();
 		profileElements.getProfile().click();
-	 	profileElements.uploadProfilePhoto("C:\\Users\\x\\Desktop\\slika.jpg");
-	 	
+	// 	profileElements.uploadProfilePhoto("D:\\Projekti IT\\Project_ITBootcamp\\Img\\slika.jpg");
+		String imgPath = new File("img/slika.jpg").getCanonicalPath();
+		profileElements.uploadProfilePhoto(imgPath);
 	 	Assert.assertEquals(notifElements.getMsgText(), "Profile Image Uploaded Successfully",
 	 			"[Error! message doesn't exist!!!]");
 	 	notifElements.msgDisaper();
